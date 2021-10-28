@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { ItemList } from '../models/listModel';
+import { ListService } from '../services/list.service';
+
 
 @Component({
   selector: 'app-folder',
@@ -7,12 +10,37 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./folder.page.scss'],
 })
 export class FolderPage implements OnInit {
-  public folder: string;
-
-  constructor(private activatedRoute: ActivatedRoute) { }
+  
+  Items:ItemList[];
+  task:ItemList
+  constructor(public listItem:ListService, private router:Router) { }
 
   ngOnInit() {
-    this.folder = this.activatedRoute.snapshot.paramMap.get('id');
+    this.getItemList()
   }
+ 
+  //interactuando con La API
+  getItemList(){
+    this.listItem.getItemList().subscribe( res => {
+      this.Items = res;
+    })
+  }
+
+  deleteTask(_id:string){
+    this.listItem.deleteItemList(_id)
+      .subscribe( 
+        (res) => {
+          this.getItemList()
+        }, 
+        err => console.log(err))
+  }
+
+  
+  
+  
+  
+  
+
+  
 
 }

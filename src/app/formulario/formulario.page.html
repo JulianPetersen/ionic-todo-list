@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>modal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="container">
+  <h1 class="ion-text-center">Agregar una nueva tarea</h1>
+  <div class="form">
+    <ion-item class="item">
+      <ion-label  position="floating">Escriba aqui</ion-label>
+      <ion-input [(ngModel)]="newItem.task"></ion-input>
+    </ion-item>
+  </div>
+  <div class="buttons">
+    <ion-buttons class="btns">
+      <ion-button color="danger" fill="solid" [routerLink]="['/folder/Inbox']">cerrar</ion-button>
+      <ion-button color="primary" fill="solid" (click)='agregarTarea()'>Agregar</ion-button>
+    </ion-buttons>
+  </div>
+  
+</ion-content>
+
+
