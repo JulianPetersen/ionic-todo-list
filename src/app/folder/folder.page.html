@@ -6,24 +6,34 @@
     <ion-title>Todo List</ion-title>
   </ion-toolbar>
 </ion-header>
+    <div class="containForm">
+      <h1 class="ion-text-center">Agregar una nueva tarea</h1>
+      <div class="form">
+        <ion-item class="item">
+          <ion-label  position="floating">Escriba aqui</ion-label>
+          <ion-input [(ngModel)]="taskItem.task" id="inputTask"></ion-input>
+        </ion-item>
+      </div>
+      <div class="buttons">
+        <ion-buttons class="btns">
+          <ion-button class="btn" color="primary" fill="solid" (click)="setItemList()">Agregar</ion-button>
+        </ion-buttons>
+      </div>
+    </div>
+    
+    <ion-content>
+      <ion-list>
+        <ion-item *ngFor="let item of Items">
+          <ion-label>{{item.task}}</ion-label>
+          <ion-buttons>
+            <ion-button color="primary" fill="solid" size="small"><ion-icon name="pencil-outline"></ion-icon></ion-button>
+            <ion-button color="danger" fill="solid" size="small" (click)="deleteTask(item._id)" ><ion-icon name="archive-outline"></ion-icon></ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+    
+ 
+  
 
-
-<ion-content>
-  <!-- fab placed to the bottom end -->
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button>
-      <ion-icon name="add" [routerLink]="['/formulario']"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-
-  <ion-list>
-    <ion-item *ngFor="let item of Items">
-      <ion-label>{{item.task}}</ion-label>
-      <ion-buttons>
-        <ion-button color="primary" fill="solid" size="small"><ion-icon name="pencil-outline"></ion-icon></ion-button>
-        <ion-button color="danger" fill="solid" size="small" (click)="deleteTask(item._id)" ><ion-icon name="archive-outline"></ion-icon></ion-button>
-      </ion-buttons>
-    </ion-item>
-  </ion-list>
-</ion-content>
 

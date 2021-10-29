@@ -12,7 +12,10 @@ import { ListService } from '../services/list.service';
 export class FolderPage implements OnInit {
   
   Items:ItemList[];
-  task:ItemList
+  taskItem:ItemList = {
+    task : ''
+  }
+
   constructor(public listItem:ListService, private router:Router) { }
 
   ngOnInit() {
@@ -26,6 +29,16 @@ export class FolderPage implements OnInit {
     })
   }
 
+
+  setItemList(){
+    this.listItem.setItemList(this.taskItem)
+      .subscribe(res => this.getItemList(),
+                 err => console.log(err))
+  }
+  
+ 
+
+
   deleteTask(_id:string){
     this.listItem.deleteItemList(_id)
       .subscribe( 
@@ -35,7 +48,6 @@ export class FolderPage implements OnInit {
         err => console.log(err))
   }
 
-  
   
   
   
