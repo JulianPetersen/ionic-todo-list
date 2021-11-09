@@ -12,6 +12,7 @@ import { ListService } from '../services/list.service';
 export class FolderPage implements OnInit {
   
   Items:ItemList[];
+  
   taskItem:ItemList = {
     task : ''
   }
